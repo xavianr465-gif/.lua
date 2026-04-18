@@ -1,23 +1,29 @@
--- [[ FORSAKEN MOBILE ENGINE - FIXED ]] --
+-- [[ FORSAKEN MOBILE ENGINE - FIXED & KEYLESS ]] --
 repeat wait() until game:IsLoaded()
 
 print("--- ATTEMPTING SYNC-LOAD ---")
 
--- Bypassing the Key System entirely
+-- BYPASSING THE KEY SYSTEM ENTIRELY
 getgenv().script_key = "XKrZDyqLLdJwLfnfvjhkcyfkTNZWZyxH"
 getgenv().KeyVerified = true
+getgenv().KeyEntered = true
 
 getgenv().autogenSettings = {
     PUZZLES_BEFORE_REJOIN = 10,
     PLAYERS_BEFORE_START = 2,
-    SKIP_LAST_PUZZLE = true, 
-    DISABLE_RENDERING = true, -- Black screen mode to save battery/prevent crash
-    AUTO_HIDE_ABILITY = true,
+    MAXIMUM_TIMER_SECONDS = 120,
+    MINIMUM_TIMER_SECONDS = 3,
+    RECENT_SERVER_BLOCKLIST_LENGTH = 5,
+    PLAYER_TIMER_CHECK = 1,
     SWAP_ON_MS4 = true,
+    SKIP_LAST_PUZZLE = true, -- Safety
+    DISABLE_RENDERING = true, -- Set to true to stop mobile crashes
+    AUTO_HIDE_ABILITY = true,
     RUN_ONLY_WHEN_COOLKIDD = false,
+    WEBHOOK = '',
 }
 
--- The Loader with an Error Logger
+-- THE LOADER (FIXED URL)
 local url = 'https://raw.githubusercontent.com/who-else123/my-scripts/refs/heads/main/Syncsaken/auto-autogen.lua'
 
 local success, result = pcall(function()
@@ -26,8 +32,11 @@ end)
 
 if success and result then
     print("--- SUCCESS: STARTING SCRIPT ---")
-    loadstring(result)()
+    -- We wrap this in another pcall to stop errors from crashing the menu
+    pcall(function()
+        loadstring(result)()
+    end)
 else
     print("--- ERROR: LINK DEAD OR BLOCKED ---")
-    warn("The source link is currently 404. Check the developer Discord.")
+    warn("The source link is currently 404.")
 end
