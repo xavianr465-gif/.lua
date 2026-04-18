@@ -1,6 +1,14 @@
--- Configuration
-getgenv().script_key = "XKrZDyqLLdJwLfnfvjhkcyfkTNZWZyxH"
+-- [[ FORSAKEN SYNC-BYPASS 2026 ]] --
+repeat wait() until game:IsLoaded()
 
+-- 1. FORCE KEYLESS ACCESS
+-- We define these globally to block the key-menu from appearing
+getgenv().script_key = "XKrZDyqLLdJwLfnfvjhkcyfkTNZWZyxH"
+getgenv().KeyVerified = true
+getgenv().Verified = true
+getgenv().FinishedLoading = true
+
+-- 2. INSPIRED SETTINGS (MOBILE OPTIMIZED)
 getgenv().autogenSettings = {
     PUZZLES_BEFORE_REJOIN = 15,
     PLAYERS_BEFORE_START = 3,
@@ -9,12 +17,19 @@ getgenv().autogenSettings = {
     RECENT_SERVER_BLOCKLIST_LENGTH = 5,
     PLAYER_TIMER_CHECK = 1,
     SWAP_ON_MS4 = true,
-    SKIP_LAST_PUZZLE = true, 
-    DISABLE_RENDERING = true, -- Battery saver for mobile
+    SKIP_LAST_PUZZLE = true, -- Safety bypass
+    DISABLE_RENDERING = true, -- MUST stay true on mobile to prevent crashes
     AUTO_HIDE_ABILITY = true,
     RUN_ONLY_WHEN_COOLKIDD = false,
     WEBHOOK = '',
 }
 
--- FIXED LOADSTRING: Points to the RAW content of your repository
-loadstring(game:HttpGet('https://raw.githubusercontent.com/xavianr465-gif/.lua/main/main.lua'))()
+-- 3. THE LOADSTRING (SYNSAKEN SOURCE)
+print("Injecting Syncsaken Bypass...")
+local success, err = pcall(function()
+    loadstring(game:HttpGet('https://raw.githubusercontent.com/who-else123/my-scripts/refs/heads/main/Syncsaken/auto-autogen.lua'))()
+end)
+
+if not success then
+    warn("Failed to load source: " .. tostring(err))
+end
