@@ -1,41 +1,20 @@
-# Compiled Lua sources
-luac.out
+-- Configuration
+getgenv().script_key = "XKrZDyqLLdJwLfnfvjhkcyfkTNZWZyxH"
 
-# luarocks build files
-*.src.rock
-*.zip
-*.tar.gz
+getgenv().autogenSettings = {
+    PUZZLES_BEFORE_REJOIN = 15,
+    PLAYERS_BEFORE_START = 3,
+    MAXIMUM_TIMER_SECONDS = 120,
+    MINIMUM_TIMER_SECONDS = 3,
+    RECENT_SERVER_BLOCKLIST_LENGTH = 5,
+    PLAYER_TIMER_CHECK = 1,
+    SWAP_ON_MS4 = true,
+    SKIP_LAST_PUZZLE = true, 
+    DISABLE_RENDERING = true, -- Battery saver for mobile
+    AUTO_HIDE_ABILITY = true,
+    RUN_ONLY_WHEN_COOLKIDD = false,
+    WEBHOOK = '',
+}
 
-# Object files
-*.o
-*.os
-*.ko
-*.obj
-*.elf
-
-# Precompiled Headers
-*.gch
-*.pch
-
-# Libraries
-*.lib
-*.a
-*.la
-*.lo
-*.def
-*.exp
-
-# Shared objects (inc. Windows DLLs)
-*.dll
-*.so
-*.so.*
-*.dylib
-
-# Executables
-*.exe
-*.out
-*.app
-*.i*86
-*.x86_64
-*.hex
-
+-- FIXED LOADSTRING: Points to the RAW content of your repository
+loadstring(game:HttpGet('https://raw.githubusercontent.com/xavianr465-gif/.lua/main/main.lua'))()
