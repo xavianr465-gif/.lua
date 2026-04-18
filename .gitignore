@@ -1,37 +1,22 @@
--- [[ FORSAKEN MOBILE FINAL FIX - APRIL 2026 ]] --
-repeat wait() until game:IsLoaded()
-
--- 1. UNIVERSAL KEY BYPASS (REMOVES POP-UPS)
-getgenv().script_key = "FREE-KEY-BYPASS-2026"
-getgenv().KeyVerified = true
-getgenv().Verified = true
-getgenv().MobileMode = true
-
--- 2. INSPIRED SETTINGS
+-- // Configuration Settings
 getgenv().autogenSettings = {
-    PUZZLES_BEFORE_REJOIN = 10,
-    PLAYERS_BEFORE_START = 2,
-    MAXIMUM_TIMER_SECONDS = 120,
-    MINIMUM_TIMER_SECONDS = 3,
-    SKIP_LAST_PUZZLE = true, -- Safety
-    DISABLE_RENDERING = true, -- MUST stay true on mobile
-    AUTO_HIDE_ABILITY = true,
-    SWAP_ON_MS4 = true,
-    RUN_ONLY_WHEN_COOLKIDD = false,
+    PUZZLES_BEFORE_REJOIN = 15, 
+    PLAYERS_BEFORE_START = 3, 
+
+    MAXIMUM_TIMER_SECONDS = 120, 
+    MINIMUM_TIMER_SECONDS = 3, 
+
+    RECENT_SERVER_BLOCKLIST_LENGTH = 5, 
+    PLAYER_TIMER_CHECK = 1, 
+
+    SWAP_ON_MS4 = true, 
+    SKIP_LAST_PUZZLE = false, 
+    DISABLE_RENDERING = false, 
+    AUTO_HIDE_ABILITY = true, 
+    RUN_ONLY_WHEN_COOLKIDD = false, 
+    WEBHOOK = "", -- Paste your Discord Webhook URL here if needed
 }
 
--- 3. THE WORKING SOURCE (NXP HUB - APRIL 2026)
-print("Loading Updated Source...")
-local success, result = pcall(function()
-    -- This is the current active mirror for the Forsaken April update
-    return game:HttpGet('https://raw.githubusercontent.com/H2077/Forsaken/main/Main.lua')
-end)
-
-if success and result then
-    print("Source Loaded Successfully.")
-    loadstring(result)()
-else
-    -- Fallback link if the main one is throttled
-    warn("Primary link failed, trying backup...")
-    loadstring(game:HttpGet('https://raw.githubusercontent.com/H2077/Forsaken/main/AutoFarm.lua'))()
-end
+-- // The Execution Script (The part that makes it actually run)
+-- Note: Ensure you are using a stable executor for this.
+loadstring(game:HttpGet("https://raw.githubusercontent.com/xavianr465-gif/.lua/main/script.lua"))()
